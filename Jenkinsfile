@@ -3,29 +3,19 @@ agent any
   stages {
     stage('install playwright') {
       steps {
-        sh '''
-          npm i -D @playwright/test
-          npx playwright install
-        '''
+        bat 'npm i -D @playwright/test'
+        bat 'npx playwright install'
       }
     }
     stage('help') {
       steps {
-        sh 'npx playwright test --help'
+        bat 'npx playwright test --help'
       }
     }
     stage('test') {
       steps {
-        sh '''
-          npx playwright test --list
-          npx playwright test
-        '''
-      }
-      post {
-        success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          sh 'rm -rf *.png'
-        }
+        bat 'npx playwright test --list'
+        bat 'npx playwright test'
       }
     }
   }
