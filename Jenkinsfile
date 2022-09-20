@@ -17,6 +17,12 @@ agent any
         bat 'npx playwright test --list'
         bat 'npx playwright test'
       }
+      post {
+        success {
+          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
+          //bat 'del -rf *.png'
+        }
+      }
     }
   }
 }
