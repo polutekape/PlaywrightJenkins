@@ -19,8 +19,7 @@ agent any
       }
       post {
         success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          //bat 'del -rf *.png'
+          archiveArtifacts(artifacts: 'playwright-report/index.html', followSymlinks: false)
         }
       }
     }
